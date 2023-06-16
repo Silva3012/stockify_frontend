@@ -13,8 +13,8 @@ export default function Header({ hideHeader }) {
         <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
           <img src="/Stockify_Logo.png" alt="Stockify" width="100" height="64" />
         </Typography>
-        <Button color="inherit" href="/registerPage">Register</Button>
-        <Button color="inherit" href="/loginPage">Login</Button>
+        <Button color="inherit" href="/register">Register</Button>
+        <Button color="inherit" href="/login">Login</Button>
       </Toolbar>
     </AppBar>
   );

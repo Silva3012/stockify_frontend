@@ -48,13 +48,31 @@ export default function LoginPage() {
     }
   };
 
-  const handleGoogleLogin = () => {
-    window.location.href = 'http://localhost:3001/api/users/auth/google';
-    // console.log('Google login clicked');
+  const handleGoogleLogin = async () => {
+  try {
+    const response = await fetch('http://localhost:3001/api/users/auth/google');
+    const responseData = await response.json();
+
+    if (response.ok) {
+      // Login successful
+      // Store the authentication token in local storage or session storage
+      localStorage.setItem('token', responseData.token);
+
+      // Redirect the user to the desired page
+      router.push('/dashboard');
+    } else {
+      // Login failed
+      setErrorMessage(responseData.message);
+    }
+  } catch (error) {
+    // Error occurred during login
+    console.error('An error occurred:', error.message);
+    setErrorMessage('An error occurred during login.');
+  }
   };
 
   const handleFacebookLogin = () => {
-    window.location.href = 'http://localhost:3001/auth/facebook/stockify';
+    router.push('http://localhost:3001/api/users/auth/facebook');
     // console.log('Facebook login clicked');
   };
 

@@ -48,12 +48,12 @@ export default function RegisterPage() {
   };
 
   const handleGoogleRegister = () => {
-    window.location.href = 'http://localhost:3001/api/users/auth/google';
+    router.push('http://localhost:3001/api/users/auth/google');
     // console.log('Google registration clicked');
   };
 
   const handleFacebookRegister = () => {
-    window.location.href = 'http://localhost:3001/auth/facebook/stockify'
+    router.push('http://localhost:3001/api/user/auth/facebook');
     // console.log('Facebook registration clicked');
   };
 

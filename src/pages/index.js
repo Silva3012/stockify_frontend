@@ -1,4 +1,3 @@
-import SearchBar from '@/components/SearchBar';
 import { Container, Typography, Box, Paper } from '@mui/material';
 
 export default function Home() {
@@ -9,7 +8,6 @@ export default function Home() {
         <Typography variant="h6" gutterBottom>Take Control of Your Stock Portfolio with Stockify!</Typography>
         <Typography variant="subtitle1" gutterBottom>Manage, Track, and Stay informed about your favourite stocks in one place.</Typography>
         
-        <SearchBar />
 
         {/* Paper component for feature descriptions */}
         <Paper elevation={3} sx={{ mt: 10, p: 2 }}>
