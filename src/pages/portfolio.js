@@ -5,10 +5,9 @@ import PortfolioTable from '@/components/PortfolioTable';
 import SearchBar from '@/components/SearchBar';
 import UserNavbar from '@/components/UserNavBar';
 import PortfolioOverview from '@/components/PortfolioOverview';
+import PortfolioNewsFeed from '@/components/NewsPortfolio';
 
 export default function PortfolioPage() {
-    const recentNews = []; // Update this with the fetched data
-
     return (
         <>
         <UserNavbar />
@@ -28,18 +27,7 @@ export default function PortfolioPage() {
             <Typography variant="h5" sx={{ mb: 2 }}>
             Recent News
             </Typography>
-
-            {/* Render the recent news */}
-            {recentNews.map((newsItem) => (
-            <div key={newsItem.id}>
-                <Typography variant="subtitle1" sx={{ mb: 1 }}>
-                {newsItem.title}
-                </Typography>
-                <Typography variant="body2" color="text.secondary">
-                {newsItem.description}
-                </Typography>
-            </div>
-            ))}
+            <PortfolioNewsFeed />
         </Paper>
         </>
     );
