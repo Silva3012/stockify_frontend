@@ -101,9 +101,9 @@ export default function LoginPage() {
           Login with Google
         </Button>
 
-        <Button variant="contained" fullWidth onClick={handleFacebookLogin} sx={{ mb: 2 }}>
+        {/* <Button variant="contained" fullWidth onClick={handleFacebookLogin} sx={{ mb: 2 }}>
           Login with Facebook
-        </Button>
+        </Button> */}
 
         <Typography variant="subtitle1" sx={{ textAlign: 'center', my: 2 }}>
           Or login with email:

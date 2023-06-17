@@ -86,9 +86,9 @@ export default function RegisterPage() {
           Register with Google
         </Button>
 
-        <Button variant="contained" fullWidth onClick={handleFacebookRegister} sx={{ mb: 2 }}>
+        {/* <Button variant="contained" fullWidth onClick={handleFacebookRegister} sx={{ mb: 2 }}>
           Register with Facebook
-        </Button>
+        </Button> */}
 
         <Typography variant="subtitle1" sx={{ textAlign: 'center', my: 2 }}>
           Or register with email:
