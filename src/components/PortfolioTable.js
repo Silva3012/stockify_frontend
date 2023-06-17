@@ -22,7 +22,7 @@ export default function PortfolioTable() {
     fetch('http://localhost:3001/api/stocks/portfolio', requestOptions)
       .then((response) => response.json())
       .then((data) => {
-        setPortfolioData(data.portfolio[0].stocks);
+        setPortfolioData(data.portfolio.stocks);
         console.log(portfolioData);
       })
       .catch((error) => {
@@ -55,7 +55,7 @@ export default function PortfolioTable() {
       },
       body: JSON.stringify({
         ticker: selectedStock.ticker,
-        qty: parseInt(selectedStock.qty),
+        qty: parseInt(sellQuantity),
       }),
     };
 

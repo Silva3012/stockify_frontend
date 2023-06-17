@@ -3,6 +3,8 @@ import { Card, CardContent, Typography } from '@mui/material';
 
 export default function PortfolioOverview() {
   const [portfolioData, setPortfolioData] = useState(null);
+  const [amount, setAmount] = useState(0);
+  const [totalPortfolioAmount, setTotalPortfolioAmount] = useState(0);
 
   useEffect(() => {
     fetchPortfolioData();
@@ -19,8 +21,11 @@ export default function PortfolioOverview() {
     fetch('http://localhost:3001/api/stocks/portfolio', requestOptions)
       .then((response) => response.json())
       .then((data) => {
-        setPortfolioData(data.portfolio[0].stocks);
+        setPortfolioData(data.portfolio.stocks);
+        setAmount(data.portfolio.amount);
+        setTotalPortfolioAmount(data.portfolio.totalPortfolioAmount);
         console.log(portfolioData)
+        
       })
       .catch((error) => {
         console.log(error);
@@ -58,8 +63,8 @@ export default function PortfolioOverview() {
   };
 
   // Render loading state if portfolio data is not available
-  if (!portfolioData) {
-    return <Typography>Loading...</Typography>;
+  if (portfolioData == null) {
+    return <Typography>Portfolio data is not available yet...</Typography>;
   }
 
   const totalValue = calculateTotalValue();
@@ -72,12 +77,15 @@ export default function PortfolioOverview() {
         <Typography variant="h5" component="div">
           Portfolio Overview
         </Typography>
-        <Typography variant="subtitle1" sx={{ mt: 2 }}>
-          Total Value: ${totalValue.toFixed(2)}
+        <Typography variant="subtitle1">
+          Cash: ${amount.toFixed(2)}
         </Typography>
-        {/* <Typography variant="subtitle1">
-          Annual Return: {annualReturn.toFixed(2)}
-        </Typography> */}
+        <Typography variant="subtitle1">
+          Total Holdings: ${totalValue.toFixed(2)}
+        </Typography>
+        <Typography variant="subtitle1">
+          Total Portfolio Value: ${totalPortfolioAmount.toFixed(2)}
+        </Typography>
         <Typography variant="subtitle1">
           Today's Change: {todayChange.toFixed(2)}%
         </Typography>

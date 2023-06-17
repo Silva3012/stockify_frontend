@@ -53,7 +53,7 @@ export default function WatchlistTable() {
       <Typography variant="h5" component="div" sx={{ mt: 2 }}>
         Watchlist Overview
       </Typography>
-      {watchlistData.length > 0 ? (
+      {watchlistData && watchlistData.length > 0 ? (
         <TableContainer component={Paper} sx={{ mt: 2 }}>
           <Table stickyHeader>
             <TableHead>
@@ -97,7 +97,7 @@ export default function WatchlistTable() {
         </TableContainer>
       ) : (
         <Typography variant="body1" sx={{ mt: 2 }}>
-          Loading watchlist data...
+          {watchlistData ? 'Loading watchlist data...' : 'Watchlist is empty'}
         </Typography>
       )}
     </>

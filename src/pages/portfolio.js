@@ -4,6 +4,7 @@ import UserProfile from '@/components/UserProfile';
 import PortfolioTable from '@/components/PortfolioTable';
 import SearchBar from '@/components/SearchBar';
 import UserNavbar from '@/components/UserNavBar';
+import PortfolioOverview from '@/components/PortfolioOverview';
 
 export default function PortfolioPage() {
     const recentNews = []; // Update this with the fetched data
@@ -21,6 +22,7 @@ export default function PortfolioPage() {
             </Typography>
             <SearchBar />
         </Paper>
+        <PortfolioOverview />
         <PortfolioTable />
         <Paper elevation={3} sx={{ p: 2, mt: 4 }}>
             <Typography variant="h5" sx={{ mb: 2 }}>

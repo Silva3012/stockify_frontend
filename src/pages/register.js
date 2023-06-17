@@ -35,7 +35,7 @@ export default function RegisterPage() {
       if (response.ok) {
         // Registration successful
         // Redirect the user to the login page or perform any other desired action
-        router.push('/loginPage');
+        router.push('/login');
       } else {
         // Registration failed
         setErrorMessage(responseData.message);
@@ -133,7 +133,7 @@ export default function RegisterPage() {
 
         <Typography variant="body2" sx={{ textAlign: 'center', mt: 4 }}>
           Already have an account?{' '}
-          <Link href="/loginPage">
+          <Link href="/login">
             Login
           </Link>
         </Typography>
