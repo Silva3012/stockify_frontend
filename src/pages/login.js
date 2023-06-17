@@ -139,7 +139,7 @@ export default function LoginPage() {
 
         <Typography variant="body2" sx={{ textAlign: 'center', mt: 4 }}>
           Don't have an account?{' '}
-          <Link href="/registerPage">
+          <Link href="/register">
             Register
           </Link>
         </Typography>
