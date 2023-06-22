@@ -1,0 +1,51 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders Home component correctly 1`] = `
+<div
+  class="MuiContainer-root MuiContainer-maxWidthLg css-1oqqzyl-MuiContainer-root"
+>
+  <div
+    class="MuiBox-root css-nb25bq"
+  >
+    <h6
+      class="MuiTypography-root MuiTypography-h6 MuiTypography-gutterBottom css-18k87ye-MuiTypography-root"
+    >
+      Take Control of Your Stock Portfolio with Stockify!
+    </h6>
+    <h6
+      class="MuiTypography-root MuiTypography-subtitle1 MuiTypography-gutterBottom css-1wniyei-MuiTypography-root"
+    >
+      Manage, Track, and Stay informed about your favourite stocks in one place.
+    </h6>
+    <div
+      class="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation3 css-r06sdi-MuiPaper-root"
+    >
+      <h6
+        class="MuiTypography-root MuiTypography-subtitle1 MuiTypography-gutterBottom css-1wniyei-MuiTypography-root"
+      >
+        Create a personalized watchlist of your favourite stocks.
+      </h6>
+      <h6
+        class="MuiTypography-root MuiTypography-subtitle1 MuiTypography-gutterBottom css-1wniyei-MuiTypography-root"
+      >
+        Track real-time stock prices, including intraday and historical data.
+      </h6>
+      <h6
+        class="MuiTypography-root MuiTypography-subtitle1 MuiTypography-gutterBottom css-1wniyei-MuiTypography-root"
+      >
+        Easily manage your portfolio and monitor its performance.
+      </h6>
+      <h6
+        class="MuiTypography-root MuiTypography-subtitle1 MuiTypography-gutterBottom css-1wniyei-MuiTypography-root"
+      >
+        Stay updated with detailed stock information and recent news.
+      </h6>
+    </div>
+    <h6
+      class="MuiTypography-root MuiTypography-subtitle1 MuiTypography-gutterBottom css-12du11b-MuiTypography-root"
+    >
+      Start your journey towards financial success with Stockify today!
+    </h6>
+  </div>
+</div>
+`;

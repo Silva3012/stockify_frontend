@@ -71,10 +71,8 @@ const fetchNewsDataFromAPI = async (symbols) => {
   }
 };
 
-
-  // Render loading state if news data is not available
   if (!newsData) {
-    return <Typography>Loading news data...</Typography>;
+    return <Typography>News data not available...</Typography>;
   }
 
    return (
