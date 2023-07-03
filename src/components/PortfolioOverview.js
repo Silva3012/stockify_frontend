@@ -18,7 +18,7 @@ export default function PortfolioOverview() {
       },
     };
 
-    fetch('http://localhost:3001/api/stocks/portfolio', requestOptions)
+    fetch('https://dark-tan-mackerel-wrap.cyclic.app/api/stocks/portfolio', requestOptions)
       .then((response) => response.json())
       .then((data) => {
         setPortfolioData(data.portfolio.stocks);

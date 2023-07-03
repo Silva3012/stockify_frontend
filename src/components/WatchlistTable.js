@@ -16,7 +16,7 @@ export default function WatchlistTable() {
       },
     };
 
-    fetch('http://localhost:3001/api/stocks/watchlist', requestOptions)
+    fetch('https://dark-tan-mackerel-wrap.cyclic.app/api/stocks/watchlist', requestOptions)
       .then((response) => response.json())
       .then((data) => {
         setWatchlistData(data.stocks);
@@ -36,7 +36,7 @@ export default function WatchlistTable() {
       },
     };
 
-    fetch(`http://localhost:3001/api/stocks/watchlist/remove/${ticker}`, requestOptions)
+    fetch(`https://dark-tan-mackerel-wrap.cyclic.app/api/stocks/watchlist/remove/${ticker}`, requestOptions)
       .then((response) => response.json())
       .then((data) => {
         console.log('Stock removed from watchlist:', data);

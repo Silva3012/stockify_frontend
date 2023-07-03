@@ -19,7 +19,7 @@ const WatchlistNewsFeed = () => {
       },
     };
 
-    fetch('http://localhost:3001/api/stocks/watchlist', requestOptions)
+    fetch('https://dark-tan-mackerel-wrap.cyclic.app/api/stocks/watchlist', requestOptions)
       .then((response) => response.json())
       .then((data) => {
         console.log(data)

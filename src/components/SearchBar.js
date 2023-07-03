@@ -126,7 +126,7 @@ export default function SearchBar({ disabledButtons }) {
       }),
     };
 
-    fetch('http://localhost:3001/api/stocks/watchlist/add', requestOptions)
+    fetch('https://dark-tan-mackerel-wrap.cyclic.app/api/stocks/watchlist/add', requestOptions)
       .then((response) => response.json())
       .then((data) => {
         console.log('Stock added to watchlist:', data);
@@ -161,7 +161,7 @@ export default function SearchBar({ disabledButtons }) {
       }),
     };
 
-    fetch('http://localhost:3001/api/stocks/portfolio/add', requestOptions)
+    fetch('https://dark-tan-mackerel-wrap.cyclic.app/api/stocks/portfolio/add', requestOptions)
       .then((response) => response.json())
       .then((data) => {
         console.log('Stock added to portfolio:', data);

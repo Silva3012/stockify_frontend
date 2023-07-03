@@ -17,7 +17,7 @@ export default function LoginPage() {
   const handleEmailLogin = async () => {
     try {
       // Send a POST request to the login API endpoint
-      const response = await fetch('http://localhost:3001/api/users/login', {
+      const response = await fetch('https://dark-tan-mackerel-wrap.cyclic.app/api/users/login', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -54,7 +54,7 @@ export default function LoginPage() {
 
   const handleGoogleLogin = async () => {
   try {
-    const response = await fetch('http://localhost:3001/api/users/auth/google');
+    const response = await fetch('https://dark-tan-mackerel-wrap.cyclic.app/api/users/auth/google');
     const responseData = await response.json();
 
     if (response.ok) {
@@ -76,7 +76,7 @@ export default function LoginPage() {
   };
 
   // const handleFacebookLogin = () => {
-  //   router.push('http://localhost:3001/api/users/auth/facebook');
+  //   router.push('https://dark-tan-mackerel-wrap.cyclic.app/api/users/auth/facebook');
   //   // console.log('Facebook login clicked');
   // };
 

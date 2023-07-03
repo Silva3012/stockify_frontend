@@ -23,7 +23,7 @@ export default function AdminDashboard() {
       },
     };
 
-    fetch('http://localhost:3001/api/admin/users', requestOptions)
+    fetch('https://dark-tan-mackerel-wrap.cyclic.app/api/admin/users', requestOptions)
       .then((response) => response.json())
       .then((data) => {
         setUsers(data);
@@ -41,7 +41,7 @@ export default function AdminDashboard() {
       },
     };
 
-    fetch(`http://localhost:3001/api/admin/users/portfolio/${userId}`, requestOptions)
+    fetch(`https://dark-tan-mackerel-wrap.cyclic.app/api/admin/users/portfolio/${userId}`, requestOptions)
       .then((response) => response.json())
       .then((data) => {
         console.log(data);
@@ -52,7 +52,7 @@ export default function AdminDashboard() {
         console.error('Error fetching portfolio data:', error.message);
       });
 
-    fetch(`http://localhost:3001/api/admin/users/watchlist/${userId}`, requestOptions)
+    fetch(`https://dark-tan-mackerel-wrap.cyclic.app/api/admin/users/watchlist/${userId}`, requestOptions)
       .then((response) => response.json())
       .then((data) => {
         console.log(data);
@@ -83,7 +83,7 @@ export default function AdminDashboard() {
         },
     };
 
-    fetch(`http://localhost:3001/api/admin/users/disable/${userId}`, requestOptions)
+    fetch(`https://dark-tan-mackerel-wrap.cyclic.app/api/admin/users/disable/${userId}`, requestOptions)
         .then((response) => {
         if (response.ok) {
             // User disabled successfully
@@ -114,7 +114,7 @@ export default function AdminDashboard() {
             },
         };
 
-        fetch(`http://localhost:3001/api/admin/users/enable/${userId}`, requestOptions)
+        fetch(`https://dark-tan-mackerel-wrap.cyclic.app/api/admin/users/enable/${userId}`, requestOptions)
             .then((response) => {
             if (response.ok) {
                 // User enabled successfully

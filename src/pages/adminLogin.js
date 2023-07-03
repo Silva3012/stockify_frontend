@@ -16,7 +16,7 @@ export default function AdminLoginPage() {
   const handleEmailLogin = async () => {
     try {
       // Send a POST request to the admin login API endpoint
-      const response = await fetch('http://localhost:3001/api/admin/login', {
+      const response = await fetch('https://dark-tan-mackerel-wrap.cyclic.app/api/admin/login', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

@@ -16,7 +16,7 @@ export default function UserProfile() {
       },
     };
 
-    fetch('http://localhost:3001/api/users/username', requestOptions)
+    fetch('https://dark-tan-mackerel-wrap.cyclic.app/api/users/username', requestOptions)
       .then((response) => response.json())
       .then((data) => {
         setUsername(data.name);
