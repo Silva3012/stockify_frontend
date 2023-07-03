@@ -18,7 +18,7 @@ export default function RegisterPage() {
   const handleEmailRegister = async () => {
     try {
       // Send a POST request to the registration API endpoint
-      const response = await fetch('http://localhost:3001/api/users/register', {
+      const response = await fetch('https://dark-tan-mackerel-wrap.cyclic.app/api/users/register', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -48,11 +48,11 @@ export default function RegisterPage() {
   };
 
   const handleGoogleRegister = () => {
-    router.push('http://localhost:3001/api/users/auth/google');
+    router.push('https://dark-tan-mackerel-wrap.cyclic.app//api/users/auth/google');
   };
 
   const handleFacebookRegister = () => {
-    router.push('http://localhost:3001/api/user/auth/facebook');
+    router.push('https://dark-tan-mackerel-wrap.cyclic.app/api/user/auth/facebook');
   };
 
   const handleNameChange = (event) => {
