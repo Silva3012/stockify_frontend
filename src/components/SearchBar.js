@@ -43,7 +43,7 @@ export default function SearchBar({ disabledButtons }) {
         Authorization: `Bearer ${token}`,
       },
     };
-    const url = `http://localhost:3001/api/stocks/search?symbols=${symbol}`;
+    const url = `https://dark-tan-mackerel-wrap.cyclic.app/api/stocks/search?symbols=${symbol}`;
     fetch(url, requestOptions)
       .then((response) => response.json())
       .then((data) => {
@@ -70,7 +70,7 @@ export default function SearchBar({ disabledButtons }) {
           Authorization: `Bearer ${token}`,
         },
       };
-      const url = `http://localhost:3001/api/stocks/search?symbols=${searchInput}`;
+      const url = `https://dark-tan-mackerel-wrap.cyclic.app/api/stocks/search?symbols=${searchInput}`;
       fetch(url, requestOptions)
         .then((response) => response.json())
         .then((data) => {
