@@ -39,7 +39,11 @@ export default function LoginPage() {
         router.push('/dashboard');
       } else {
         // Login failed
-        setErrorMessage(responseData.message);
+        if (response.status === 403) {
+          setErrorMessage('Your account has been disabled. Please contact our support team.');
+        } else {
+          setErrorMessage(responseData.message);
+        } 
       }
     } catch (error) {
       // Error occurred during login
@@ -71,10 +75,10 @@ export default function LoginPage() {
   }
   };
 
-  const handleFacebookLogin = () => {
-    router.push('http://localhost:3001/api/users/auth/facebook');
-    // console.log('Facebook login clicked');
-  };
+  // const handleFacebookLogin = () => {
+  //   router.push('http://localhost:3001/api/users/auth/facebook');
+  //   // console.log('Facebook login clicked');
+  // };
 
   const handleEmailChange = (event) => {
     setEmail(event.target.value);
@@ -97,16 +101,18 @@ export default function LoginPage() {
           Login
         </Typography>
 
-        <Button variant="contained" fullWidth onClick={handleGoogleLogin} sx={{ mb: 2 }}>
+        {/* Deactivating this till I find a solution around the CORS issue */}
+        
+        {/* <Button variant="contained" fullWidth onClick={handleGoogleLogin} sx={{ mb: 2 }}>
           Login with Google
-        </Button>
+        </Button> */}
 
         {/* <Button variant="contained" fullWidth onClick={handleFacebookLogin} sx={{ mb: 2 }}>
           Login with Facebook
         </Button> */}
 
         <Typography variant="subtitle1" sx={{ textAlign: 'center', my: 2 }}>
-          Or login with email:
+          login with email:
         </Typography>
 
         <TextField

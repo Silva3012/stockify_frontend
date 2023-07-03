@@ -83,9 +83,6 @@ export default function WatchlistTable() {
                   <TableCell>${item.price.toFixed(2)}</TableCell>
                   <TableCell>{item.day_change}</TableCell>
                   <TableCell>
-                    {/* <Button variant="contained" color="primary" size="small">
-                      Add
-                    </Button>{' '} */}
                     <Button variant="outlined" color="primary" size="small" onClick={() => handleRemoveFromWatchlist(item.ticker)}>
                       Remove
                     </Button>
@@ -97,7 +94,7 @@ export default function WatchlistTable() {
         </TableContainer>
       ) : (
         <Typography variant="body1" sx={{ mt: 2 }}>
-          {watchlistData ? 'Loading watchlist data...' : 'Watchlist is empty'}
+          {watchlistData ? 'Watchlist is empty' : ' '}
         </Typography>
       )}
     </>

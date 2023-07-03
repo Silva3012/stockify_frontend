@@ -13,9 +13,11 @@ export default function Layout({ children }) {
   const isDashboardPage = router.pathname === '/dashboard';
   const isWatclistPage = router.pathname === '/watchlist';
   const isPortfolioPage = router.pathname === '/portfolio';
+  const isAdminLogin = router.pathname === '/adminLogin';
+  const isAdminDashboard = router.pathname === '/adminDashboard';
 
   // Hide the Header
-  const showHeader = !isLoginPage && !isRegisterPage && !isDashboardPage && !isWatclistPage && !isPortfolioPage;
+  const showHeader = !isLoginPage && !isRegisterPage && !isDashboardPage && !isWatclistPage && !isPortfolioPage && !isAdminLogin && !isAdminDashboard;
 
   return (
     <>

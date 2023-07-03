@@ -1,12 +1,10 @@
 import { useState } from 'react';
 import { Button, TextField, Typography, Box } from '@mui/material';
-import Link from 'next/link';
-import Header from '../components/Header';
+import Header from '@/components/Header';
 import { useRouter } from 'next/router';
 
-export default function RegisterPage() {
+export default function AdminLoginPage() {
   const router = useRouter();
-  const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [errorMessage, setErrorMessage] = useState('');
@@ -15,16 +13,15 @@ export default function RegisterPage() {
     router.push('/');
   };
 
-  const handleEmailRegister = async () => {
+  const handleEmailLogin = async () => {
     try {
-      // Send a POST request to the registration API endpoint
-      const response = await fetch('http://localhost:3001/api/users/register', {
+      // Send a POST request to the admin login API endpoint
+      const response = await fetch('http://localhost:3001/api/admin/login', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
-          name: name,
           email: email,
           password: password,
         }),
@@ -33,30 +30,21 @@ export default function RegisterPage() {
       const responseData = await response.json();
 
       if (response.ok) {
-        // Registration successful
-        // Redirect the user to the login page or perform any other desired action
-        router.push('/login');
+        // Login successful
+        // Store the authentication token in local storage
+        localStorage.setItem('adminToken', responseData.token);
+
+        // Redirect the user to the desired page
+        router.push('/adminDashboard');
       } else {
-        // Registration failed
+        // Login failed
         setErrorMessage(responseData.message);
       }
     } catch (error) {
-      // Error occurred during registration
+      // Error occurred during login
       console.error('An error occurred:', error.message);
-      setErrorMessage('An error occurred during registration.');
+      setErrorMessage('An error occurred during login.');
     }
-  };
-
-  const handleGoogleRegister = () => {
-    router.push('http://localhost:3001/api/users/auth/google');
-  };
-
-  const handleFacebookRegister = () => {
-    router.push('http://localhost:3001/api/user/auth/facebook');
-  };
-
-  const handleNameChange = (event) => {
-    setName(event.target.value);
   };
 
   const handleEmailChange = (event) => {
@@ -77,31 +65,12 @@ export default function RegisterPage() {
 
       <Box sx={{ maxWidth: 400, mx: 'auto', mt: 10 }}>
         <Typography variant="h4" sx={{ textAlign: 'center', mb: 4 }}>
-          Register
+          Admin Login
         </Typography>
-
-        {/* Deactivating this till I find a solution around the CORS issue */}
-
-        {/* <Button variant="contained" fullWidth onClick={handleGoogleRegister} sx={{ mb: 2 }}>
-          Register with Google
-        </Button> */}
-
-        {/* <Button variant="contained" fullWidth onClick={handleFacebookRegister} sx={{ mb: 2 }}>
-          Register with Facebook
-        </Button> */}
 
         <Typography variant="subtitle1" sx={{ textAlign: 'center', my: 2 }}>
-          register with email:
+          Login with email:
         </Typography>
-
-        <TextField
-          label="Name"
-          type="text"
-          fullWidth
-          value={name}
-          onChange={handleNameChange}
-          sx={{ mb: 2 }}
-        />
 
         <TextField
           label="Email"
@@ -121,8 +90,8 @@ export default function RegisterPage() {
           sx={{ mb: 2 }}
         />
 
-        <Button variant="contained" color="primary" fullWidth onClick={handleEmailRegister}>
-          Register with Email
+        <Button variant="contained" color="primary" fullWidth onClick={handleEmailLogin}>
+          Login with Email
         </Button>
 
         {errorMessage && (
@@ -130,13 +99,6 @@ export default function RegisterPage() {
             {errorMessage}
           </Typography>
         )}
-
-        <Typography variant="body2" sx={{ textAlign: 'center', mt: 4 }}>
-          Already have an account?{' '}
-          <Link href="/login">
-            Login
-          </Link>
-        </Typography>
       </Box>
     </>
   );

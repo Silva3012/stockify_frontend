@@ -15,9 +15,6 @@ import {
   DialogTitle,
   DialogContent,
   DialogActions,
-  List,
-  ListItem,
-  ListItemText,
 } from '@mui/material';
 import { Autocomplete } from '@mui/material'; // Import Autocomplete component
 import { StockifyContext } from '../StockifyContext';
@@ -25,7 +22,7 @@ import { useRouter } from 'next/router';
 
 const MIN_SEARCH_LENGTH = 1; // Minimum length for autocomplete search
 
-export default function SearchBar() {
+export default function SearchBar({ disabledButtons }) {
   const [symbol, setSymbol] = useState('');
   const [loading, setLoading] = useState(false);
   const { updateSearchResults } = useContext(StockifyContext);
@@ -37,6 +34,7 @@ export default function SearchBar() {
   const [suggestions, setSuggestions] = useState([]);
   const router = useRouter();
 
+  // Function to handle the search button click
   const handleSearch = () => {
     setLoading(true);
     const token = localStorage.getItem('token');
@@ -60,6 +58,7 @@ export default function SearchBar() {
       });
   };
 
+  // Function to handle the text input change
   const handleChange = (event) => {
     const searchInput = event.target.value;
     setSymbol(searchInput);
@@ -83,25 +82,33 @@ export default function SearchBar() {
           setLoading(false);
         });
     } else {
-      setSearchResults([]);
+      setSuggestions([]);
     }
   };
 
-  const handleOptionSelected = (option) => {
-    setSymbol(option.ticker);
+  // Function to handle the selection of an option from the Autocomplete dropdown
+  const handleOptionSelected = (event, value) => {
+    if(value) {
+      setSymbol(value);
+      handleSearch();
+    }
   };
 
+  // Function to handle opening the dialog for adding to the portfolio
   const handleOpenDialog = (item) => {
     setSelectedItem(item);
     setOpen(true);
   };
 
+  // Function to handle closing the dialog for adding to the portfolio
   const handleCloseDialog = () => {
     setOpen(false);
     setSelectedItem(null);
     setQty(0);
   };
 
+
+  // Function to handle adding the selected item to the watchlist
   const handleAddToWatchlist = (item) => {
     setLoading(true);
     const token = localStorage.getItem('token');
@@ -125,7 +132,7 @@ export default function SearchBar() {
         console.log('Stock added to watchlist:', data);
         setWatchlistStatus('success');
         setLoading(false);
-        router.push('/dashboard');
+        router.reload();
       })
       .catch((error) => {
         console.error('Error adding stock to watchlist:', error);
@@ -134,6 +141,7 @@ export default function SearchBar() {
       });
   };
 
+  // Function to handle adding the selected item to the portfolio
   const handleAddToPortfolio = () => {
     setLoading(true);
     const token = localStorage.getItem('token');
@@ -159,7 +167,7 @@ export default function SearchBar() {
         console.log('Stock added to portfolio:', data);
         setLoading(false);
         handleCloseDialog();
-        router.push('/dashboard');
+        router.reload();
       })
       .catch((error) => {
         console.error('Error adding stock to portfolio:', error);
@@ -173,7 +181,7 @@ export default function SearchBar() {
         <Autocomplete
           freeSolo
           disableClearable
-          options={suggestions}
+          options={suggestions || []}
           sx={{ width: 300 }}
           renderInput={(params) => (
             <TextField 
@@ -188,8 +196,7 @@ export default function SearchBar() {
               onChange={handleChange} 
               />
           )}
-          onInputChange={(event, value) => setSymbol(value)}
-          onOptionSelected={(event, option) => handleOptionSelected(option)}
+          onChange={handleOptionSelected}
         />
         <Button variant="contained" color="primary" sx={{ ml: 2 }} onClick={handleSearch} disabled={loading}>
           {loading ? <CircularProgress size={24} /> : 'Search'}
@@ -219,12 +226,14 @@ export default function SearchBar() {
                       <TableCell>{item.day_change}</TableCell>
                       <TableCell>${`${(item.market_cap / 1000000000).toFixed(2)}B`}</TableCell>
                       <TableCell>
-                        <Button variant="outlined" disabled={loading} onClick={() => handleOpenDialog(item)}>
+                        <Button variant="outlined" 
+                        disabled={disabledButtons || loading} 
+                        onClick={() => handleOpenDialog(item)}>
                           Add to Portfolio
                         </Button>{' '}
                         <Button
                           variant="outlined"
-                          disabled={loading}
+                          disabled={disabledButtons || loading}
                           onClick={() => handleAddToWatchlist(item)}
                         >
                           {loading ? (
